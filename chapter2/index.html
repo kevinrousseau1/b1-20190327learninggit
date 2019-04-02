@@ -74,17 +74,18 @@
 
 <h2 id="amatterofstyle">A matter of style</h2>
 
-<p><span id="Håkon%20Wium%20Lie">Håkon Wium Lie</span> was working at <abbr>CERN</abbr> at the same time as Tim Berners‐Lee. He immediately recognised the potential of the World Wide Web and its language, <abbr>HTML</abbr>. He also realised that the expressive power of the language was in danger of being swamped by visual features. Lie proposed a new format to describe the presentation of <abbr>HTML</abbr> documents: Cascading Style Sheets.</p>
+<p><span id="Håkon%20Wium%20Lie">Håkon Wium Lie</span> travaillait au <abbr>CERN</abbr> en même temps que Tim Berners-Lee. Il a immédiatement reconnu le potentiel du World Wide Web ainsi que de son langage, le<abbr> HTML</abbr>. Il s'est également rendu compte que le pouvoir d'expression de la langue risquait d'être submergé par des caractéristiques visuelles.
+Lie a proposé un nouveau format pour décrire la présentation des documents <abbr>HTML</abbr>: Cascading Style Sheets (ce qui donne en français: feuilles de style en cascade).</p>
 
-<p>He was quickly joined by the Dutch programmer <span id="Bert%20Bos">Bert Bos</span>. Together they set about creating a syntax that would be powerful enough to handle the demands of designers, while remaining simple enough to learn quickly. They succeeded.</p>
+<p>Il est rapidement rejoint par le programmeur Néerlandais <span id="Bert%20Bos">Bert Bos</span>. Ensemble ils ont créé une syntaxe suffisamment puissante pour répondre aux demandes des designers, tout en restant simple pour apprendre rapidement. Ils ont réussi.</p>
 
-<p>Think for a moment of all the sites out there on the web. There’s a huge variation in visual style: colour schemes, typographic treatments, textures and layouts. All of that variety is made possible by one simple pattern that describes all the <abbr id="CSS">CSS</abbr> ever written:</p>
+<p>Pensez un moment à tous les sites disponibles sur le web. Le style visuel varie énormément : jeux de couleurs, traitements typographiques, textures et mises en page. Toute cette variété est rendu possible par un simple motif qui décrit tout le <abbr id="CSS">CSS</abbr> jamais écrit:</p>
 
-<pre><code>selector {
-    property: value;
+<pre><code>selecteur {
+    propriété: valeur;
 }</code></pre>
 
-<p>That’s it.</p>
+<p>C'est tout.</p>
 
 <p><abbr>CSS</abbr> shares <abbr>HTML</abbr>’s forgiving attitude to errors. If a web browser encounters a selector it doesn’t understand, it simply skips over whatever is between that selector’s curly braces. If a browser sees a property or a value it doesn’t understand, it just ignores that particular declaration. The browser does not throw an error. The browser does not stop parsing the <abbr>CSS</abbr> at this point, refusing to go any further.</p>
 
