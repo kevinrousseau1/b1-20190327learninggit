@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
+<meta name="theme-color" content="#5f7995" />
+<meta name="author" content="Jeremy Keith" />
+<meta name="description" content="Chapter Two: Materials" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="@adactio" />
+<meta name="twitter:creator" content="@adactio" />
+<meta name="twitter:title" property="og:title" content="Resilient Web Design—Chapter 2" />
+<meta name="twitter:description" property="og:description" content="Chapter Two: Materials" />
+<meta name="twitter:url" property="og:url" content="https://resilientwebdesign.com/chapter2/" />
+<meta name="twitter:image" property="og:image" content="https://resilientwebdesign.com/chapter2/images/medium/zengarden.png" />
+<title>Resilient Web Design—Chapter 2</title>
+<link rel="preload" href="../fonts/etbookot-roman-webfont.woff2" crossorigin type="font/woff2" as="font" />
+<link rel="preload" href="../js/scripts.js" as="script" />
+<link rel="stylesheet" href="../css/styles.css" />
+<link rel="contents" href="../contents/" />
+<link rel="author" href="../author/" />
+<link rel="prev" href="../chapter1/" />
+<link rel="next prefetch" href="../chapter3/" />
+<link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" />
+<link rel="amphtml" href="amp.html" />
+<link rel="manifest" href="../manifest.json" />
+<link rel="icon shortcut" href="../images/icon512.png" sizes="512x512" type="image/png" />
+<link rel="apple-touch-icon" href="../images/icon512.png" type="image/png" />
+<link rel="icon" href="../favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+<header>
+<a href="../">Resilient Web Design</a>
+</header>
+
+<main>
+
+<h1><span>Chapter 2:</span> Matériaux</h1>
+
+<p>AU RISQUE D'APPRENDRE au vieux singe à faire la grimace, j'aimerais que vous réfléchissiez à ce qui se passe quand un navigateur analyse un élément <abbr>HTML</abbr>. Prenons, par exemple, un élément de paragraphe contenant du texte. Il est composé d'une une balise <code class="markup element">P</code> d'ouverture, une balise <code class="markup element">P</code> de fermeture, et entre ces balises il y a le texte.</p>
+
+<pre><code>&lt;p&gt;du texte&lt;/p&gt;</code></pre>
+
+<p>Un navigateur Web qui rencontre cet élément affichera le texte entre les balises d'ouverture et de fermeture. Pensez maintenant à ce qui se passe lorsque ce même navigateur Web rencontre un élément qu'il ne reconnaît pas.</p>
+
+<pre><code>&lt;marklar&gt;encore du texte&lt;/marklar&gt;</code></pre>
+
+<p>Une fois encore, le navigateur affiche le texte entre les balises d'ouverture et de fermeture. Ce qui est intéressant ici, c'est ce que le navigateur ne fait pas. Le navigateur ne génère pas d'erreur. Le navigateur n'arrête pas d'analyser le code <abbr>HTML</abbr> à ce stade, refusant d'aller plus loin. Au lieu de cela, il ignore simplement les balises et affiche le contenu qu'elles contiennent à l'intérieur.</p>
+
+<p>Cette attitude libérale à l'égard des erreurs a permis au vocabulaire <abbr>HTML</abbr> d'évoluer au fil du temps, passant des 21 éléments originaux aux 121 éléments du <abbr>HTML</abbr>5. Chaque fois qu'un nouvel élément est introduit dans le <abbr>HTML</abbr>, nous savons exactement comment les anciens navigateurs le traiteront ; ils ignoreront les balises et afficheront le contenu.</p>
+
+<p>C'est une caractéristique remarquablement puissante. Cela permet aux navigateurs d'implémenter de nouvelles fonctionnalités <abbr>HTML</abbr> à des rythmes différents. Nous n'avons pas besoin d'attendre que chaque navigateur reconnaisse un nouvel élément. Au lieu de cela, nous pouvons commencer à utiliser le nouvel élément à tout moment, en sachant que les navigateurs non- compatibles ne s'y arrêteront pas.</p>
+
+<pre><code>&lt;main&gt;ce texte s'affichera dans n'importe quel navigateur&lt;/main&gt;</code></pre>
+
+<p>Si les navigateurs Web traitent toutes les balises de la même façon - en affichant leur contenu alors à quoi bon avoir un vocabulaire d'éléments en <abbr>HTML</abbr> ?</p>
+
+<section aria-labelledby="themeaningofmarkup">
+
+<h2 id="themeaningofmarkup">La signification du balisage</h2>
+
+<p>Certains éléments <abbr>HTML</abbr> sont dénués de sens. L'élément <code class="markup element">SPAN</code> ne dit rien sur son contenu. En ce qui concerne le navigateur Web ? vous pouvez aussi bien utiliser un élément <code class="markup element">MARKLAR</code> inexistant. Mais, c'est l'exception. La plupart des éléments <abbr>HTML</abbr> existent pour une raison. Ils ont été conçu et approuvés afin de tenir compte des situations particulières que des auteurs comme vous et moi, sommes susceptibles de rencontrer.</p>
+
+<p>Il existe évidemment des éléments spéciaux, comme l'élément <code class="markup element">A</code>, qui viennent avec des super pouvoirs. Dans le cas de l'élément <code class="markup element">A</code>, sa surpuissance réside dans l'attribut <code class="markup attribute">HREF</code>  qui permet de nous relier à toute autre ressource sur le web. D'autres éléments comme <code class="markup element">INPUT</code>, <code class="markup element">SELECT</code>, <code class="markup element">TEXTAREA</code> et <code class="markup element">BUTTON</code> possède leurs propres super pouvoirs , permettant aux gens d'entrer des données et de les soumettre à un serveur web.</p>
+
+<p>Ensuite, il y a les éléments qui décrivent le type de contenu qu'ils contiennent. Le contenu d'un élément <code class="markup element">P</code> doit être considéré comme un paragraphe de texte. Le contenu d'un élément <code class="markup element">LI</code> doit être considéré comme un élément d'une liste. Les navigateurs affichent le contenu de ces éléments avec quelques indications visuelles quant à leur signification. Les paragraphes sont affichés avec des espaces avant et après leur contenu. Les éléments de la liste sont affichés avec des puces ou des chiffres avant leur contenu.</p>
+
+<p>Au début le vocabulaire <abbr>HTML</abbr> s'est enrichi de nouveaux éléments qui fournissaient des instructions visuelles aux navigateurs Web : <code class="markup element">GRAND</code>, <code class="markup element">PETIT</code>, <code class="markup element">CENTRER</code>, <code class="markup element">POLICE</code>
+En fait, les instructions visuelles étaient la seule raison pour laquelle ces éléments existaient - elles ne fournissaient aucun indice quant à la <em>signification</em> du contenu qu'elles contenaient. Le <abbr>HTML</abbr> risquait de devenir un langage d'enseignement [d'instruction] visuel plutôt qu'un vocabulaire de sens. 
+</p>
+
+</section>
+
+<section aria-labelledby="amatterofstyle">
+
+<h2 id="amatterofstyle">Une question de style</h2>
+
+<p><span id="Håkon%20Wium%20Lie">Håkon Wium Lie</span>1 travaillait au <abbr>CERN</abbr> en même temps que Tim Berners-Lee. Il a immédiatement reconnu le potentiel du World Wide Web ainsi que de son langage, le <abbr>HTML</abbr>. Il s'est également rendu compte que le pouvoir d'expression de la langue risquait d'être submergé par des caractéristiques visuelles.
+Lie a proposé un nouveau format pour décrire la présentation des documents <abbr>HTML</abbr> : feuilles de style en cascade (CSS : Cascading Style Sheets, ce qui donne en français: feuilles de style en cascade). 
+</p>
+
+<p>Il est rapidement rejoint par le programmeur Néerlandais <span id="Bert%20Bos">Bert Bos</span> 2. Ensemble ils ont créé une syntaxe suffisamment puissante pour répondre aux demandes des designers, tout en restant simple pour apprendre rapidement. Ils ont réussi.</p>
+
+<p>Pensez un moment à tous les sites disponibles sur le web. Le style visuel varie énormément : jeux de couleurs, traitements typographiques, textures et mises en page. Toute cette variété est rendu possible par un simple motif qui décrit tout le <abbr id="CSS">CSS</abbr> jamais écrit :</p>
+
+<pre><code>sélecteur {
+    propriété: valeur;
+}</code></pre>
+
+<p>C'est tout.</p>
+
+<p>Tout comme le langage <abbr>HTML</abbr>, le langage <abbr>CSS</abbr> peut fonctionner en ignorant certaines erreurs de programmation. Si un navigateur web rencontre un sélecteur qu'il ne comprend pas, il ignore simplement ce qui se trouve entre les accolades de ce sélecteur. Si un navigateur voit une propriété ou une valeur qu'il ne comprend pas, il va juste ignorer cette déclaration. Le navigateur ne génère pas d'erreur. Le navigateur n'arrête pas d'analyser le <abbr>CSS</abbr> à ce stade, refusant d'aller plus loin.</p>
+
+<pre><code>marklar {
+    marklar: marklar;
+}</code></pre>
+
+<p>Comme avec le <abbr>HTML</abbr>, cette gestion des erreurs à permis au <abbr>CSS</abbr> de croître avec le temps. Nouveaux sélecteurs, nouvelles propriétés et de nouvelles valeurs ont été ajoutés au vocabulaire de la langue au fils des années. Chaque fois qu'une nouvelle fonctionnalité arrive en <abbr>CSS</abbr>, les designers ainsi que les développeurs savent qu'ils peuvent l'utiliser en toute sécurité, même si elle n'est pas encore largement prise en charge par les navigateurs. Ils peuvent être assurés que les anciens navigateurs réagiront avec indifférence face aux nouvelles fonctionnalités. </p>
+
+<p>Ce n'est pas parce que le langage est élégant et bien conçu que les gens l'utiliseront. Le <abbr>CSS</abbr> est arrivé plus tard que le <abbr>HTML</abbr>. Durant cette période intermédiaire, les designers n'ont pas attendu patiemment un moyen de styliser leurs documents sur le Web.
+Ils ont utilisé ce qui était disponible pour eux. 
+</p>
+
+</section>
+
+<section aria-labelledby="killingit">
+
+<h2 id="killingit">Tuez le</h2>
+
+<p>En 1996, <span id="David%20Siegel">David Siegel</span>3 a publié un livre intitulé <cite id="Creating%20Killer%20Websites">"Creating Killer Websites"</cite>. Il y présente une série de techniques permettant de quereller les dessins accrocheurs avec du langage <abbr>HTML</abbr>.</p>
+
+<p>Une des techniques consiste à utiliser un fichier <abbr>GIF</abbr> transparent d'une taille d'un pixel sur un(1x1). Si cela était inséré dans une page en tant qu'élément <code class="markup element">IMG</code>, mais avec des valeurs précises dans ses attributs <code class="markup attribute">WIDTH</code> et <code class="markup attribute">HEIGHT</code>, les concepteurs avaient la possibilité de contrôler la quantité d'espaces blancs dans leurs conceptions.</p>
+
+<p>Une autre des techniques utilise l'élément <code class="markup element">TABLE</code>. Cet élément, avec ses enfants <code class="markup element">TR</code> et <code class="markup element">TD</code>, était destiné à décrire des données tabulaires. Mais avec les bonnes valeurs appliquées aux largeurs et aux hauteurs des cellules de tableau, Cela pourrait être utilisé pour recréer à peu près n'importe quelle disposition souhaitée.</p>
+
+<p>C'étaient des bidouillages; solutions intelligentes à des problèmes épineux. Mais ils ont eu des conséquences fâcheuses. Les concepteurs considéraient le <abbr>HTML</abbr> comme un outil d'apparence du contenu plutôt qu'un langage permettant de décrire la signification du contenu. Le <abbr>CSS</abbr> était une solution à ce problème, si seulement les développeurs pouvaient être convaincus de l'utiliser.</p>
+
+</section>
+
+<section aria-labelledby="browserwars">
+
+<h2 id="browserwars">La guerre des navigateurs</h2>
+
+<p>Une des raisons pour lesquelles les web designers n'utilisaient pas le <abbr>CSS</abbr> était la faible compatibilité avec les navigateurs.
+Revenons à l'époque où il y avait deux navigateurs majeurs se disputant pour l'âme du web :
+Microsoft Internet Explorer et Netscape. Ils étaient incompatibles à cause de leur design de par leur conception.
+Lorsqu'un navigateur inventerait un nouvel élément ou attribut <abbr>HTML</abbr>. L'autre inventerait son propre élément ou attribut distinct pour faire exactement la même chose.</p>
+
+<p> 
+Peut-être que la réflexion derrière cette stratégie était que les Web designers devaient avoir à choisir quelle propriétés ils allaient utiliser, comme un enfant obligé de choisir entre ses deux parents. En réalité, les Web Designers n'avaient d'autre choix que d'écrire pour les deux navigateurs, ce qui signifiait faire le travail deux fois</p>
+
+<p>Un groupe de Web Designers a décidé que c'en était trop? Ils se sont réunis sous la bannière du <span id="Web%20Standards%20Project">Web Standards Project</span> et ont commencé à faire pression sur Microsoft et Netscape pour qu'ils abandonnent leurs méthodes propriétaires et adoptent des normes telles que le <abbr>CSS</abbr>.</p>
+
+<p>La vague a commencé avec le lancement d'Internet Explorer 5 pour Mac, un navigateur lancé avec une capacité impressionnante à supporter le <abbr>CSS</abbr>. Si c'était le futur du Web Design, la vie était sur le point de devenir beaucoup plus productive et créative.</p>
+
+<p>Certains Webdesigner avant-gardistes ont saisi tôt les bugs <abbr>CSS</abbr>. Ils ont refaçonné  leurs site web en utilisant la <abbr>CSS</abbr> pour la mise en page plutôt que les tableaux et les images transparentes <abbr>GIF</abbr>. Fidèle à l'esprit fondateur du Web, ils ont partagé ce qu'ils apprenaient et ont encouragé les autres utilisateurs à passer au <abbr>CSS</abbr>.</p>
+
+<p>Surement que la meilleure démonstration du pouvoir de la CSS était le site web « CSS Zen Garden» , créé par Dave Shea. C'était une démonstration de designs esthétiques et variés, tous réalisés avec le CSS. Surtout, le HTML est resté le même.</p>
+
+<figure>
+<picture>
+<source media="all and (min-width: 75em)" srcset="images/large/zengarden.png" />
+<source media="all and (min-width: 50em)" srcset="images/medium/zengarden.png, images/large/zengarden.png 1.5x" />
+<img src="images/small/zengarden.png" alt="A montage of screenshots, all very different in appearance." srcset="images/medium/zengarden.png 2x, images/large/zengarden.png 3x" />
+</picture>
+<figcaption>A selection from the cornucopia of designs created for the CSS Zen Garden.</figcaption>
+</figure>
+
+<p>Seeing the same <abbr>HTML</abbr> document styled in a multitude of different ways drove home one of the beneficial effects of <abbr>CSS</abbr>: separation of concerns.</p>
+
+</section>
+
+<section aria-labelledby="coupling">
+
+<h2 id="coupling">Couplage</h2>
+
+<p>Dans n'importe quel système, de l'infrastructure urbaine à un programme informatique, les concepteurs de ce système peuvent choisir dans quelle mesure les éléments du système dépendent les uns des autres. Dans un système étroitement couplé, chaque pièce dépend de chaque pièce. Dans un système à couplage lâche, toutes les pièces sont indépendantes, avec peu ou pas de connaissance des autres pièces.</p>
+
+<p>Dans un système étroitement couplé, chaque partie du système peut faire des suppositions sur les autres parties. Ces systèmes peuvent être conçus assez rapidement, mais à un prix abordable. Ils manquent de résistance. Si une pièce tombe en panne, elle pourrait emporter tout le système avec elle.</p>
+
+<p>La conception d'un système à couplage lâche peut demander plus de travail. L'avantage est que le résultat global est plus résistant à l'échec. Les différentes parties du système peuvent être remplacées avec un minimum d'effets d'entraînement. </p>
+
+<p>Les hacks mis au point par David Siegel couplent étroitement la structure et la présentation en un seul fichier <abbr>HTML</abbr> monolithique. L'adoption du <abbr>CSS</abbr> a facilité cette dépendance, rapprochant le web de l'approche modulaire de la philosophie UNIX. Les informations de présentation pourraient être déplacées dans un fichier séparé : une feuille de style. C'est ainsi qu'un seul document <abbr>HTML</abbr> au Jardin Zen CSS pouvait s'appliquer à autant de conceptions différentes.</p>
+
+<p>La feuille de style doit encore avoir une certaine connaissance de la structure du document <abbr>HTML</abbr>. Très souvent, des " crochets " sont ajoutés dans le balisage pour faciliter le style : valeurs spécifiques des attributs  <code class="markup attribute">CLASS</code> ou <code class="markup attribute">ID</code>, par exemple. Le <abbr>HTML</abbr> et le <abbr>CSS</abbr> ne sont donc pas complètement séparés. Ils forment un partenariat, mais ils ont aussi un arrangement. Le document de balisage peut décider qu'il veut essayer de voir d'autres feuilles de style parfois. Entre-temps, la feuille de style pourrait éventuellement être appliquée à d'autres documents. Ils sont librement couplés.</p>
+
+</section>
+
+<section aria-labelledby="dancingaboutarchitecture">
+
+<h2 id="dancingaboutarchitecture">Dancer sur l'architecture</h2>
+
+<p>
+Il faut du temps à une discipline pour développer ses propres valeurs de conception. Le design web [Web design] est une discipline récente. Tandis que nous commençons lentement à élaborer notre propre ensemble de principes directeurs, nous pouvons nous inspirer d'autres disciplines.
+</p>
+
+<p>
+Le monde de l'architecture a développé son propre ensemble de valeurs de conception au fil des années. Une de ces valeurs est le principe de l'honnêteté matérielle. Un matériau ne doit pas être utilisé en substitution d'un autre. Sinon le résultat final est trompeur.
+</p>
+
+<p>L'utilisation de <code class="markup element">TABLE</code>S pour la mise en page est matériellement malhonnête. L'élément <code class="markup element">TABLE</code> est destiné à baliser la structure des données tabulaires. Le résultat final de l'utilisation de <code class="markup element">TABLE</code>S, de l'élément FONT, et les spacer<abbr>GIF</abbr>S est une façade. À première vue, tout semble bien mieux, mais cela ne résistera pas au test. Dès qu'un tel site web est soumis à un test de contrainte sur son utilisation réelle sur plusieurs navigateurs, sa façade s'effrite.</p>
+
+<p>L'utilisation du <abbr>CSS</abbr> pour la présentation est matériellement honnête - c'est l'utilisation prévue du <abbr>CSS</abbr> . Cela permet également au HTML d'être matériellement honnête. Plutôt que d'essayer de remplir deux rôles - structure et présentation -, le <abbr>HTML</abbr> peut à nouveau remplir son véritable objectif, marquer le sens du contenu à l'aide de balises.</p>
+
+<p>Il est encore possible d'utiliser <abbr>CSS</abbr> pour être matériellement malhonnête. Pendant longtemps, il n'y avait pas de moyen facile d'ajouter des coins arrondis à un élément en utilisant <abbr>CSS</abbr> . Au lieu de cela, les concepteurs Web ont trouvé des moyens de résoudre le problème en ajoutant des images d'arrière-plan à l'élément pour simuler le même effet final. Cela a fonctionné jusqu'à un certain point, mais tout comme le hack space<abbr>GIF</abbr> , c'était une façade. Puis la propriété <code class="css property">border‐radius</code> est arrivée. Désormais, les concepteurs peuvent avoir leurs coins arrondis de manière à être matériellement honnête.</p>
+
+<p>l'essentiel est que les concepteurs ont pu utiliser les nouvelles propriétés <code class="css property">border‐radius</code> bien avant que tous les navigateurs Web les prennent en charge. Tout cela grâce au modèle libéral de traitement des erreurs de <abbr>CSS</abbr> . Les nouveaux navigateurs afficheraient les coins arrondis. Les anciens navigateurs n'enverrait pas d'erreur. Les anciens navigateurs n'arrêteront pas d'analyser le <abbr>CSS</abbr> en refusant d'analyser la suite. Ils ignoreront simplement les instructions qu'ils ne comprennent pas et passeront à autre chose. Pas de préjudice, pas de faute.
+</p>
+
+<p>Bien entendu, cela signifie que le site Web résultant sera différent en fonction du navigateurs. Certaines personnes verront des coins arrondis. D'autres non.</p>
+
+<p>Et c'est bon.</p>
+
+</section>
+
+<aside>
+<h2>References</h2>
+<ol>
+<li><a href="http://www.xml.com/pub/a/w3j/s1.people.html"><cite>The Web is Ruined and I Ruined it</cite></a> by David Siegel</li>
+<li><a href="http://www.csszengarden.com/">CSS Zen Garden</a> by Dave Shea</li>
+</ol>
+</aside>
+
+</main>
+
+<nav>
+<a href="../chapter3/" rel="next"><cite><span>Chapter 3:</span> Visions</cite></a>
+<ol start="0">
+<li><a href="../introduction/"><cite>Introduction</cite></a></li>
+<li><a href="../chapter1/"><cite><span>Chapter 1</span> Foundations</cite></a></li>
+<li><a href="../chapter2/"><cite><span>Chapter 2</span> Materials</cite></a></li>
+<li><a href="../chapter3/"><cite><span>Chapter 3</span> Visions</cite></a></li>
+<li><a href="../chapter4/"><cite><span>Chapter 4</span> Languages</cite></a></li>
+<li><a href="../chapter5/"><cite><span>Chapter 5</span> Layers</cite></a></li>
+<li><a href="../chapter6/"><cite><span>Chapter 6</span> Steps</cite></a></li>
+<li><a href="../chapter7/"><cite><span>Chapter 7</span> Challenges</cite></a></li>
+<li><a href="../author/" rel="author"><cite>About the author</cite></a></li>
+<li><a href="../index/"><cite>Index</cite></a></li>
+</ol>
+</nav>
+
+<footer>
+<p><cite>Resilient Web Design</cite> was written and produced by <a href="https://adactio.com" class="v‐card">Jeremy Keith</a>, and typeset in <a href="https://edwardtufte.github.io/et-book/"><abbr>ET</abbr> Book</a>.</p>
+<p><small>Licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution‐ShareAlike 4.0 International License</a>.</small></p>
+</footer>
+
+<script src="../js/scripts.js" defer></script>
+</body>
+</html>
